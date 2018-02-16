@@ -9,7 +9,11 @@ class parqueo{
 		int altura;
 		int capacidad;
 		carro**** carros;
+		int n;
+		int m;
+		int z;
 	public:
+	
 		parqueo();
 		parqueo(int,int,int);
 		~parqueo();
@@ -17,6 +21,11 @@ class parqueo{
 		void setcapacidad(int,int);
 		int getpisos();
 		int getcapacidad();
+		carro**** getmatriz();
+		int getm();
+		int getn();
+		int getaltura();
+
 		
 };
 #endif
