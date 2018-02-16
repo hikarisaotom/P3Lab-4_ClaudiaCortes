@@ -16,7 +16,7 @@ void liberarMatriz(int**&, int);
 void liberarTablero(string**&,int);
 
 int main()
-{	bool Continuar=1;
+{	/*bool Continuar=1;
 	vector<string> Array;
 	while (Continuar){
 		//Llamado del menu del programa.
@@ -52,7 +52,7 @@ int main()
 		}//Fin del switch.	
 	cout<<"Desea Continuar en el sistema?[0/1]"<<endl;
 	cin>>Continuar;
-	}//FIn del while.
+	}//FIn del while.*/
 return 0;
 }
 
