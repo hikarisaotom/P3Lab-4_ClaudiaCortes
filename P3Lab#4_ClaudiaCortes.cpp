@@ -7,6 +7,10 @@ using namespace std;
 
 //Menu principal del programa.
 int menu();
+//Liberar memoria de la matriz
+void liberarMatriz(int**&, int);
+//Liberar memoria de la matriz.
+void liberarTablero(string**&,int);
 
 int main()
 {	bool Continuar=1;
@@ -60,3 +64,31 @@ int menu(){
 	}
 	return Respuesta;
 }//Fin del metodo del Menu.
+
+
+
+//liberar memoria
+void liberarMatriz(int**& matriz, int size){
+        for(int i= 0; i<size; i++){
+                delete[] matriz[i];
+                matriz[i] = NULL;
+        }
+
+        delete[] matriz;
+        matriz = NULL;
+
+        cout<< "Espacio liberado"<< endl;
+}
+//Liberar memoria de la matriz.
+void liberarTablero(string**& tablero, int size){
+        for(int i = 0; i< size; i++){
+                delete[] tablero[i];
+                tablero[i] = NULL;
+        }
+
+        delete[] tablero;
+        tablero = NULL;
+
+        cout<< "liberado memoria tablero "<< endl;
+}
+
