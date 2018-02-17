@@ -25,6 +25,9 @@ class parqueo{
 		int getm();
 		int getn();
 		int getaltura();
+		void eliminarcarro(int,int,int);
+		void agregarcarro(carro*,int);
+		void contabilizar();
 
 		
 };

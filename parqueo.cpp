@@ -83,3 +83,43 @@ int parqueo:: getm(){
 int parqueo::getaltura(){
 	return altura;
 }
+
+void parqueo::eliminarcarro(int N,int M,int Z){
+	carros[N][M][Z]=NULL;
+		cout<<"Se ha eliminado el carro";
+}
+
+void parqueo::agregarcarro(carro* carrito, int piso){
+	bool bandera=false;
+	for (int i=0;i<n;i++){
+		for (int j=0;j<m;j++){
+			if(carros[i][j][piso]==NULL){
+				cout<<"se ha parqueado el carro exitosamente";
+				bandera=true;
+				break;
+			}
+			if (bandera){
+				break;
+			}
+		}//fin del segundo for.
+	}//fin del primer for
+}
+
+void parqueo:: contabilizar(){
+	int llenos=0;
+	int vacios=0;
+	for (int i=0;i<n;i++){
+		for (int j=0;j<m;j++){
+			for (int k= 0;k< z;k++){
+				if (carros[i][j][k]==NULL){
+					vacios=vacios+1;		
+				}else{
+					llenos=llenos+1;
+				}
+				
+			}
+		}
+	}
+	cout<<"La cantidad de parqueos llenos es :" <<llenos<<endl;
+	cout<<"la cantidad de parqueos vacios es :"<<vacios<<endl;
+}

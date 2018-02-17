@@ -15,10 +15,12 @@ void liberarMatriz(int**&, int);
 //Liberar memoria de la matriz.
 void liberarTablero(string**&,int);
 parqueo* crearparqueo();
-carro crearcarro(carro****,int,int,int);
+	carro crearcarro(int,int,int, parqueo*);
+void eliminarcarro(parqueo*);
+
 int main()
 {	bool Continuar=1;
-	parqueo* Global_parqueo;
+	parqueo* Global_Parqueo;
 	vector<string> Array;
 	carro**** carros;
 	while (Continuar){
@@ -26,25 +28,26 @@ int main()
 		switch(menu()){
 			case 1:{//
 				cout<<"Usted selecciono: crear parqueo"<<endl;
-				Global_parqueo=crearparqueo();
-				carros=Global_parqueo->getmatriz();
+				Global_Parqueo=crearparqueo();
+				carros=Global_Parqueo->getmatriz();
 				break;
 				}//Fin del case 1.
 			case 2:{//
 				cout<<"Usted selecciono: crear carro"<<endl;
-				crearcarro(Global_parqueo->getmatriz(), Global_parqueo->getn(),Global_parqueo->getm(),Global_parqueo->getaltura());
+				crearcarro(Global_Parqueo->getn(),Global_Parqueo->getm(),Global_Parqueo->getaltura(),Global_Parqueo);
 				break;
 				}//Fin del case 2
 
 			case 3:{//
-				cout<<"Usted selecciono: "<<endl;
+				cout<<"Usted selecciono:Eliminar el parqueo "<<endl;
 
+				eliminarcarro(Global_Parqueo);	
 				break;
 				}//Fin del case 3
 
 			case 4:{//
-				cout<<"Usted selecciono: "<<endl;
-
+				cout<<"Usted selecciono: contabilizar"<<endl;
+				Global_Parqueo->contabilizar();
 				break;
 				}//Fin del case 4.
 			default:{//		
@@ -59,7 +62,21 @@ int main()
 	}//FIn del while.
 return 0;
 }
-carro  crearcarro(carro**** parqueo,int  x,int y, int altura){
+
+void eliminarcarro(parqueo* lugar){
+	int piso;
+	int posx;
+	int posy;
+	cout<<"ingrese la primera posicion del carro";
+	cin>>posx;
+	cout<<"ingrese la posicion  del y dle carro";
+	cin>>posy;
+	cout<<"Ingrese el piso del carro";
+	cin>>piso;
+	lugar->eliminarcarro(posx,posy,piso);
+}
+
+carro  crearcarro(int  x,int y, int altura, parqueo* lugar){
 	int piso=0;
 	int alturacarro;
 	string matricula;
@@ -73,16 +90,20 @@ carro  crearcarro(carro**** parqueo,int  x,int y, int altura){
 	cin >>color;
 	cout<<"ingrese la altura";
 	cin>>alturacarro;
+	/*
 	for (int i=0;i<x;i++){
 		for (int j=0;j<y;j++){
 			if (parqueo[piso][i][j]==NULL){
 			//temporal = new carro();
 				parqueo[i][j][piso] = new carro(matricula,color,alturacarro);
+				cout<<"Se Parqueo exitosamente el carro en la posicion" <<endl;
+				cout<<i<<j<<piso<<endl;
+				break;
 			}
 		}
-	}
-
-
+	}*/
+	lugar->agregarcarro(new carro(matricula,color,alturacarro),piso);
+	return temporal;
 }
 parqueo* crearparqueo(){
 	int personas=-5;
